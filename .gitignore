@@ -9,7 +9,7 @@ target/
 .idea/compiler.xml
 .idea/libraries/
 .idea
-/src/main/resources
+/src/main/resources/application.properties
 
 ### Eclipse ###
 .apt_generated
