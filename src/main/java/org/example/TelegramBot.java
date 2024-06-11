@@ -4,6 +4,7 @@ import data.MyData;
 import editorFileName.EditorFileName;
 import fileSearching.FileSearching;
 import formatMyMessage.FormatOfMessage;
+import myInlineKeyboard.MyInlineKeyboard;
 import myMessage.MyMessage;
 import myPhoto.MyPhoto;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -28,7 +29,7 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     private final Properties properties;
 
-
+    private final MyInlineKeyboard keyboard = new MyInlineKeyboard();
 
     private final StringBuilder currentMessageFromUser = new StringBuilder();
 
@@ -76,7 +77,7 @@ public class TelegramBot extends TelegramLongPollingBot {
                     sendMessage(message);
                 }
                 case "about" -> {
-                    MyMessage message = creatorOfMessage.createMessageWithKeyboard(chatId, PreparedText.get("about"), createReplyKeyboardMarkup());
+                    MyMessage message = creatorOfMessage.createMessageWithKeyboard(chatId, PreparedText.get("about"), keyboard);
                     sendMessage(message);
                 }
             }
@@ -85,7 +86,7 @@ public class TelegramBot extends TelegramLongPollingBot {
             Long chatId = update.getMessage().getChatId();
             currentMessageFromUser.append(update.getMessage().getText());
             if (currentMessageFromUser.toString().equalsIgnoreCase("/start")) {
-                MyMessage message = creatorOfMessage.createMessageWithKeyboard(chatId, PreparedText.get("Приветствие"), createReplyKeyboardMarkup());
+                MyMessage message = creatorOfMessage.createMessageWithKeyboard(chatId, PreparedText.get("Приветствие"), keyboard);
                 sendMessage(message);
             } else if (currentMessageFromUser.toString().startsWith("name ")) {
                 String title = currentMessageFromUser.substring(5);
@@ -133,7 +134,7 @@ public class TelegramBot extends TelegramLongPollingBot {
             MyMessage message4 = creatorOfMessage.createMessage(chatId, PreparedText.get("Не найдено"), "MARKDOWN");
             sendMessage(message4);
         }
-        MyMessage message5 = creatorOfMessage.createMessageWithKeyboard(chatId, "Еще?", createReplyKeyboardMarkup());
+        MyMessage message5 = creatorOfMessage.createMessageWithKeyboard(chatId, "Еще?", keyboard);
         sendMessage(message5);
     }
 
@@ -170,7 +171,7 @@ public class TelegramBot extends TelegramLongPollingBot {
             MyMessage message4 = creatorOfMessage.createMessage(chatId, PreparedText.get("Не найдено"), "MARKDOWN");
             sendMessage(message4);
         }
-        MyMessage message5 = creatorOfMessage.createMessageWithKeyboard(chatId, PreparedText.get("Еще?"), createReplyKeyboardMarkup());
+        MyMessage message5 = creatorOfMessage.createMessageWithKeyboard(chatId, PreparedText.get("Еще?"), keyboard);
         sendMessage(message5);
 
     }
@@ -189,24 +190,6 @@ public class TelegramBot extends TelegramLongPollingBot {
         } catch (TelegramApiException e) {
             e.printStackTrace();
         }
-    }
-
-    private InlineKeyboardMarkup createReplyKeyboardMarkup() {
-        InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
-        List<List<InlineKeyboardButton>> inlineKeyboardButtons = new ArrayList<>();
-        List<InlineKeyboardButton> list1 = new ArrayList<>();
-        InlineKeyboardButton inlineKeyboardButton1 = new InlineKeyboardButton("Найти произведение по названию");
-        InlineKeyboardButton inlineKeyboardButton2 = new InlineKeyboardButton("Найти произведение по слову");
-        InlineKeyboardButton inlineKeyboardButton3 = new InlineKeyboardButton("О чат-боте");
-        inlineKeyboardButton1.setCallbackData("name");
-        inlineKeyboardButton2.setCallbackData("word");
-        inlineKeyboardButton3.setCallbackData("about");
-        list1.add(inlineKeyboardButton1);
-        list1.add(inlineKeyboardButton2);
-        list1.add(inlineKeyboardButton3);
-        inlineKeyboardButtons.add(list1);
-        inlineKeyboardMarkup.setKeyboard(inlineKeyboardButtons);
-        return inlineKeyboardMarkup;
     }
 
 }
