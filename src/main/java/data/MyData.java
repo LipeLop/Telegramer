@@ -9,6 +9,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
+/*
+ Класс, в котором подготавливается информация о книгах, картинках, цитатах и т.п.
+ */
 public class MyData {
     public static File[] pictures = new File(Objects.requireNonNull(MyData.class.getClassLoader().getResource("pictures")).getFile()).listFiles();
     public static File[] books = new File(Objects.requireNonNull(MyData.class.getClassLoader().getResource("books")).getFile()).listFiles();
