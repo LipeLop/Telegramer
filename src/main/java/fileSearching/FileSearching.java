@@ -2,6 +2,9 @@ package fileSearching;
 
 import java.io.File;
 
+/*
+    Поиск файла по названию
+ */
 public class FileSearching {
 
     public File findFileByName(File[] files, String filename) {

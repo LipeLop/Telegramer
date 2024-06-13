@@ -3,6 +3,9 @@ package myMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 
+/*
+    Класс, создающий сообщения
+ */
 public class MyMessage extends SendMessage {
 
     public MyMessage createMessageWithKeyboard(final long chatId, String text, final InlineKeyboardMarkup keyboardMarkup) {

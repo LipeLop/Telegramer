@@ -6,7 +6,9 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKe
 import java.util.ArrayList;
 import java.util.List;
 
-
+/*
+    Класс с клавиатурой
+ */
 public class MyInlineKeyboard extends InlineKeyboardMarkup {
 
     public MyInlineKeyboard() {

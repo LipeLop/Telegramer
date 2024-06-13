@@ -12,18 +12,16 @@ import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.DeleteMessage;
 import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
 import static data.MyData.PreparedText;
+
 
 public class TelegramBot extends TelegramLongPollingBot {
 
@@ -33,6 +31,7 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     private final StringBuilder currentMessageFromUser = new StringBuilder();
 
+    // Функция для инициализации Properties
     public TelegramBot() {
         properties = new Properties();
         try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream("application.properties")) {
@@ -53,7 +52,7 @@ public class TelegramBot extends TelegramLongPollingBot {
         return properties.getProperty("bot.token");
     }
 
-
+    // Функция, где обрабатываются сообщения пользователя
     @Override
     public void onUpdateReceived(Update update) {
         if (update.hasCallbackQuery()) {
@@ -114,7 +113,7 @@ public class TelegramBot extends TelegramLongPollingBot {
         }
 
     }
-
+    // Найти книгу по слову
     private void findWordOfBook(final Long chatId, final String word) {
         MyMessage creatorOfMessage = new MyMessage();
         FormatOfMessage format = new FormatOfMessage();
@@ -138,7 +137,7 @@ public class TelegramBot extends TelegramLongPollingBot {
         sendMessage(message5);
     }
 
-
+    // Найти книгу по названию
     private void findTitleOfBook(final long chatId, final String title) {
         MyMessage creatorOfMessage = new MyMessage();
         FormatOfMessage format = new FormatOfMessage();
@@ -175,7 +174,7 @@ public class TelegramBot extends TelegramLongPollingBot {
         sendMessage(message5);
 
     }
-
+    // Отправка фото
     private void sendPhoto(SendPhoto sendPhoto) {
         try {
             execute(sendPhoto);
@@ -183,7 +182,7 @@ public class TelegramBot extends TelegramLongPollingBot {
             throw new RuntimeException(e);
         }
     }
-
+    // Отправка сообщения
     private void sendMessage(MyMessage message) {
         try {
             execute(message);

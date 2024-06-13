@@ -5,6 +5,9 @@ import org.telegram.telegrambots.meta.api.objects.InputFile;
 
 import java.io.File;
 
+/*
+Класс, создающий фото
+ */
 public class MyPhoto {
 
     public SendPhoto createPhoto(final Long chatId, final File file){
