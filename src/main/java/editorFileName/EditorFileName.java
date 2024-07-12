@@ -1,5 +1,8 @@
 package editorFileName;
 
+/*
+    Класс для удаления расширения из названия файла
+ */
 public class EditorFileName {
 
     public  String removeExtension(String fileName) {

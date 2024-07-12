@@ -1,5 +1,8 @@
 package formatMyMessage;
 
+/*
+    Преобразование сообщения в италику, жирный или цитату
+ */
 public class FormatOfMessage {
 
     public String intoItalic(String text){

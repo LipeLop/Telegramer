@@ -133,7 +133,7 @@ public class TelegramBot extends TelegramLongPollingBot {
             MyMessage message4 = creatorOfMessage.createMessage(chatId, PreparedText.get("Не найдено"), "MARKDOWN");
             sendMessage(message4);
         }
-        MyMessage message5 = creatorOfMessage.createMessageWithKeyboard(chatId, PreparedText.get("Еще?"), createReplyKeyboardMarkup());
+        MyMessage message5 = creatorOfMessage.createMessageWithKeyboard(chatId, "Еще?", createReplyKeyboardMarkup());
         sendMessage(message5);
     }
 

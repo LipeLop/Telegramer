@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
+// Класс, создающий словарь со словами в файлах
 public class IndexingTexts {
     public HashMap<String, List<File>> IndexingTextsInMap(File[] files) {
         HashMap<String, List<File>> map = new HashMap<>();
